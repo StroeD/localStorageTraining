@@ -1,3 +1,15 @@
 .header{
     height:100px;
 }
+
+@keyframes slidedogg{
+    0%{left:0vw;}
+    50%{left:65vw;}
+    100%{left:0vw;}
+}
+img{
+    position:absolute;
+    animation-name: slidedogg;
+    animation-duration:2s;
+    animation-iteration-count:infinite;
+}

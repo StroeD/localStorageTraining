@@ -17,7 +17,7 @@ function submit(){
         console.log(tableparse)
 }
 function writeTable(){
-    alert(localStorage.getItem('pres'))
+
     if(localStorage.getItem('pres')==null){
     
 document.getElementById('tbody').innerHTML = ''
