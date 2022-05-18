@@ -2,6 +2,7 @@ if (localStorage.getItem('pres')!=null){
     var presentations=JSON.parse(localStorage.getItem('pres'));
 } else {
     var presentations = [];
+    localstorage.clear();
 }
 let tableparse = JSON.parse(localStorage.getItem('pres'))
 function submit(){
@@ -21,6 +22,7 @@ function writeTable(){
     if(localStorage.getItem('pres')==null){
     
 document.getElementById('tbody').innerHTML = ''
+localStorage.clear();
 }else if (localStorage.getItem('pres')!=null){
     var tableContent = JSON.parse(localStorage.getItem('pres'));
     document.getElementById('tbody').innerHTML = ''
@@ -48,10 +50,11 @@ function deleteElement(a){
     }else if(tableparse.length==1 || tableparse.length==0){
 
         localStorage.clear();
-        tableparse = null;
+        tableparse = [];
         presentations = [];
         presentation=[]
         writeTable();
+        localStorage.clear();
     }
 }
 
@@ -64,7 +67,7 @@ document.getElementById('suppression').addEventListener('click',function(){
     console.log(tableparse)
     a=Number(document.getElementById('rowValue').value);
     deleteElement(a);
-    tableparse = (localStorage.setItem('pres',JSON.stringify(tableparse)));
+    tableparse = JSON.parse(localStorage.getItem('pres'));
     tableparse = null;
     tableContent = null;
 

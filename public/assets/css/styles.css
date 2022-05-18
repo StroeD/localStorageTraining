@@ -13,3 +13,10 @@ img{
     animation-duration:2s;
     animation-iteration-count:infinite;
 }
+.floating{
+    position:fixed;
+    bottom:10px;
+}
+#blank{
+    height:50px;
+}
