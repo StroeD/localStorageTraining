@@ -2,7 +2,7 @@ if (localStorage.getItem('pres')!=null){
     var presentations=JSON.parse(localStorage.getItem('pres'));
 } else {
     var presentations = [];
-    localstorage.clear();
+    localStorage.clear();
 }
 let tableparse = JSON.parse(localStorage.getItem('pres'))
 function submit(){
@@ -29,6 +29,7 @@ localStorage.clear();
     tableContent.forEach(e=>{
     document.getElementById('tbody').innerHTML+=`
     <tr>
+    <td></td>
     <td>${e[0]}</td>
     <td>${e[1]}</td>
     <td>${e[2]}</td>

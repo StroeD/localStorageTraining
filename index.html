@@ -10,8 +10,9 @@
     <title>Local Storage</title>
 </head>
 <body>
-    <div class="container">
+
         <div class="row header"></div>
+        <div class="container card shadow">
         <div class="floating">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submission">
                 Submit a presentation!
@@ -20,15 +21,20 @@
                 Delete a presentation.
             </button>
         </div>
-            <table class="table">
-                <thead>
+        <div class="row justify-content-center">
+            <div class="col offset-md-4 h1">
+                Presentations summary
+            </div>
+        </div>
+            <table class="table css-serial">
+                <thead class="alert-primary">
                     <tr>
+                    <th scope="col">#</th>
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
                     <th scope="col">Title</th>
                     <th scope="col">Mail</th>
                     <th scope="col">URL</th>
-                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -50,13 +56,13 @@
                             <div class="">
                                 <form class="col-md-8 offset-md-2">
                                     <div class="mb-3">
+                                        <label for="firstName" class="form-label">Prénom</label>
+                                        <input type="text" class="form-control" id="firstName">
+                                    </div> 
+                                    <div class="mb-3">
                                         <label for="lastName" class="form-label">Nom</label>
                                         <input type="text" class="form-control" id="lastName">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="firstName" class="form-label">Prénom</label>
-                                        <input type="text" class="form-control" id="firstName">
-                                    </div>            
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Title</label>
                                         <input type="text" class="form-control" id="title">
