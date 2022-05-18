@@ -5,28 +5,24 @@ if (localStorage.getItem('pres')!=null){
 }
 let tableparse = JSON.parse(localStorage.getItem('pres'))
 function submit(){
-        if(tableparse != null){
-            if(tableparse[0][5]==null){
-            i=0;
-            } else{
-            i=tableparse.length;
-            }
-        }else {
-        i=0
-        }
-        i++
+
         let firstName = document.getElementById('firstName').value;
         let lastName = document.getElementById('lastName').value;
         let title = document.getElementById('title').value;
         let mail = document.getElementById('mail').value;
         let presURL = document.getElementById('url').value;
-        let presentation = [firstName,lastName,title,mail,presURL,i]
+        presentation = [firstName,lastName,title,mail,presURL]
         presentations.push(presentation);
         localStorage.setItem('pres',JSON.stringify(presentations));
+        console.log(tableparse)
 }
 function writeTable(){
-    if(localStorage.getItem('pres')!=null){
-    let tableContent = JSON.parse(localStorage.getItem('pres'));
+    alert(localStorage.getItem('pres'))
+    if(localStorage.getItem('pres')==null){
+    
+document.getElementById('tbody').innerHTML = ''
+}else if (localStorage.getItem('pres')!=null){
+    var tableContent = JSON.parse(localStorage.getItem('pres'));
     document.getElementById('tbody').innerHTML = ''
     tableContent.forEach(e=>{
     document.getElementById('tbody').innerHTML+=`
@@ -40,8 +36,6 @@ function writeTable(){
 
 
 })
-}else if (localStorage.getItem('pres')==null){
-    document.getElementById('tbody').innerHTML = ''
 }
 }
 
@@ -50,10 +44,13 @@ function deleteElement(a){
     if (tableparse.length>1){
     tableparse.splice(a-1,1);
     localStorage.setItem('pres',JSON.stringify(tableparse))
-    writeTable();
-    }else if(tableparse.length==1){
+    writeTable()
+    }else if(tableparse.length==1 || tableparse.length==0){
+
+        localStorage.clear();
         tableparse = null;
-        localStorage.clear()
+        presentations = [];
+        presentation=[]
         writeTable();
     }
 }
@@ -64,9 +61,13 @@ writeTable();
 document.getElementById('submit').addEventListener('click',submit);
 document.getElementById('submit').addEventListener('click',writeTable);
 document.getElementById('suppression').addEventListener('click',function(){
+    console.log(tableparse)
     a=Number(document.getElementById('rowValue').value);
     deleteElement(a);
-    writeTable()
+    tableparse = (localStorage.setItem('pres',JSON.stringify(tableparse)));
+    tableparse = null;
+    tableContent = null;
+
 })
 // document.querySelector('.btn-danger').addEventListener('click',deleteElement(1))
 
